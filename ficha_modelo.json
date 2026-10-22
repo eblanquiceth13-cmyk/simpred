@@ -1,0 +1,125 @@
+{
+  "nombre": "SIMPRED — modelo de riesgo de falla",
+  "version": "1.0",
+  "fecha": "2026-10-22",
+  "modelo": "XGBoost",
+  "uso_previsto": "Apoyar a técnicos y jefes de mantenimiento a priorizar revisiones. No reemplaza su criterio.",
+  "datos": {
+    "fuente": "AI4I 2020 Predictive Maintenance Dataset — UCI Machine Learning Repository",
+    "doi": "10.24432/C5HS5C",
+    "licencia": "CC BY 4.0",
+    "tipo": "Simulados (sin datos personales)",
+    "registros": 10000,
+    "porcentaje_fallas": 3.39
+  },
+  "variables": {
+    "tipo": "Calidad del producto",
+    "temp_aire": "Temperatura del aire",
+    "temp_proceso": "Temperatura del proceso",
+    "velocidad": "Velocidad",
+    "torque": "Torque",
+    "desgaste": "Desgaste de la herramienta",
+    "dif_temp": "Diferencia de temperatura",
+    "potencia": "Potencia",
+    "esfuerzo": "Esfuerzo (desgaste × torque)"
+  },
+  "balanceo": "SMOTE aplicado solo a los datos de entrenamiento",
+  "umbrales": {
+    "alto": 0.5,
+    "medio": 0.2
+  },
+  "metricas_validacion_cruzada": {
+    "Recall": 0.83,
+    "Precisión": 0.691,
+    "F1": 0.754,
+    "ROC-AUC": 0.971,
+    "PR-AUC": 0.868
+  },
+  "metricas_prueba": {
+    "Recall": 0.824,
+    "Precisión": 0.675,
+    "F1": 0.742,
+    "ROC-AUC": 0.982,
+    "PR-AUC": 0.873
+  },
+  "errores_prueba": {
+    "fallas_detectadas": 56,
+    "fallas_no_detectadas": 12,
+    "falsas_alarmas": 27
+  },
+  "metricas_por_calidad": [
+    {
+      "Calidad": "L (baja)",
+      "Registros": 1170,
+      "Fallas reales": 38,
+      "Recall": 0.895,
+      "Precisión": 0.607
+    },
+    {
+      "Calidad": "M (media)",
+      "Registros": 616,
+      "Fallas reales": 25,
+      "Recall": 0.8,
+      "Precisión": 0.8
+    },
+    {
+      "Calidad": "H (alta)",
+      "Registros": 214,
+      "Fallas reales": 5,
+      "Recall": 0.4,
+      "Precisión": 1.0
+    }
+  ],
+  "comparacion_modelos_prueba": [
+    {
+      "Modelo": "Regresión logística",
+      "Recall": 0.882,
+      "Precisión": 0.181,
+      "F1": 0.3,
+      "ROC-AUC": 0.94,
+      "PR-AUC": 0.428
+    },
+    {
+      "Modelo": "Random Forest",
+      "Recall": 0.853,
+      "Precisión": 0.644,
+      "F1": 0.734,
+      "ROC-AUC": 0.987,
+      "PR-AUC": 0.847
+    },
+    {
+      "Modelo": "XGBoost",
+      "Recall": 0.824,
+      "Precisión": 0.675,
+      "F1": 0.742,
+      "ROC-AUC": 0.982,
+      "PR-AUC": 0.873
+    }
+  ],
+  "importancia_global_shap": {
+    "Velocidad": 1.4519000053405762,
+    "Desgaste de la herramienta": 1.3494000434875488,
+    "Potencia": 1.1419999599456787,
+    "Diferencia de temperatura": 1.003100037574768,
+    "Esfuerzo (desgaste × torque)": 0.857200026512146,
+    "Temperatura del proceso": 0.6338000297546387,
+    "Temperatura del aire": 0.4424999952316284,
+    "Torque": 0.40369999408721924,
+    "Calidad del producto": 0.3328000009059906
+  },
+  "limitaciones": [
+    "Datos simulados: el desempeño en una planta real puede ser menor; habría que reentrenar con datos de la empresa.",
+    "Pocas fallas (≈3 %) y aún menos en productos de calidad H: las métricas de ese grupo son poco confiables.",
+    "Las fallas aleatorias no se pueden anticipar con estas variables.",
+    "SHAP muestra en qué se basó el modelo, no prueba la causa física de la falla.",
+    "El dataset original tiene algunas inconsistencias de etiquetado (fallas sin tipo registrado).",
+    "El modelo puede dejar pasar fallas (falsos negativos) y dar falsas alarmas (falsos positivos)."
+  ],
+  "versiones": {
+    "pandas": "2.2.3",
+    "scikit-learn": "1.6.1",
+    "imbalanced-learn": "0.14.2",
+    "xgboost": "3.4.1",
+    "shap": "0.54.1"
+  }
+}

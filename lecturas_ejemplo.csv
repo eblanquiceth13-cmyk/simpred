@@ -1,0 +1,9 @@
+equipo,tipo,temp_aire,temp_proceso,velocidad,torque,desgaste
+Fresadora-01,M,298.5,308.9,1520,38.0,45
+Fresadora-02,L,302.6,310.9,1310,55.0,120
+Fresadora-03,L,300.2,310.5,1380,60.5,195
+Torno-04,H,299.8,309.6,1600,36.0,90
+Torno-05,M,301.0,310.8,2650,14.0,60
+Fresadora-06,L,299.0,309.2,1420,48.0,210
+Torno-07,M,297.5,308.0,1750,30.0,10
+Fresadora-08,H,303.0,311.6,1290,65.0,230

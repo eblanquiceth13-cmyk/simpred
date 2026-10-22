@@ -1,0 +1,53 @@
+{
+  "variables": [
+    "tipo",
+    "temp_aire",
+    "temp_proceso",
+    "velocidad",
+    "torque",
+    "desgaste",
+    "dif_temp",
+    "potencia",
+    "esfuerzo"
+  ],
+  "etiquetas": {
+    "tipo": [
+      "Calidad del producto",
+      ""
+    ],
+    "temp_aire": [
+      "Temperatura del aire",
+      "K"
+    ],
+    "temp_proceso": [
+      "Temperatura del proceso",
+      "K"
+    ],
+    "velocidad": [
+      "Velocidad",
+      "rpm"
+    ],
+    "torque": [
+      "Torque",
+      "Nm"
+    ],
+    "desgaste": [
+      "Desgaste de la herramienta",
+      "min"
+    ],
+    "dif_temp": [
+      "Diferencia de temperatura",
+      "K"
+    ],
+    "potencia": [
+      "Potencia",
+      "W"
+    ],
+    "esfuerzo": [
+      "Esfuerzo (desgaste × torque)",
+      "min·Nm"
+    ]
+  },
+  "umbral": 0.5,
+  "umbral_medio": 0.2
+}
